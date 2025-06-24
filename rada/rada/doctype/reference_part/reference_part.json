@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{reference_part} {part_category}",
+ "creation": "2025-06-15 20:54:00.177106",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "reference_part",
+  "reference_type",
+  "manufacturer",
+  "column_break_gkyz",
+  "part_category",
+  "column_break_fssw",
+  "reorder_level",
+  "column_break_ipfg",
+  "is_discontinued",
+  "section_break_2",
+  "description",
+  "section_break_3",
+  "available_items"
+ ],
+ "fields": [
+  {
+   "fieldname": "reorder_level",
+   "fieldtype": "Int",
+   "label": "Reorder Level",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_ipfg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Details Section"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Description Section"
+  },
+  {
+   "fieldname": "available_items",
+   "fieldtype": "HTML",
+   "label": "Available Item(s)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_discontinued",
+   "fieldtype": "Check",
+   "label": "Is Discontinued"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "part_category",
+   "fieldtype": "Link",
+   "label": "Part Category",
+   "options": "Part Category"
+  },
+  {
+   "fieldname": "column_break_fssw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_part",
+   "fieldtype": "Data",
+   "label": "Reference Part",
+   "unique": 1
+  },
+  {
+   "fieldname": "reference_type",
+   "fieldtype": "Select",
+   "label": "Reference Type",
+   "options": "\nOE\nGeneric"
+  },
+  {
+   "fieldname": "column_break_gkyz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.reference_type == 'OE'",
+   "fieldname": "manufacturer",
+   "fieldtype": "Link",
+   "label": "Manufacturer",
+   "options": "Manufacturer"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Item",
+   "link_fieldname": "custom_reference_part"
+  }
+ ],
+ "modified": "2025-06-24 21:52:35.530959",
+ "modified_by": "Administrator",
+ "module": "Rada",
+ "name": "Reference Part",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
