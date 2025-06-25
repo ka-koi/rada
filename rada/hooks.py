@@ -258,6 +258,16 @@ fixtures = [
     {
         "dt": "Server Script",
         "filters": [["module", "=", "Rada"]]
+    },
+    {
+        "dt": "Report",
+        "filters": [["module", "=", "Rada"]]
     }
+
 ]
+
+doctype_js = {
+    "Reference Part": "public/js/reference_part.js"
+}
+
 

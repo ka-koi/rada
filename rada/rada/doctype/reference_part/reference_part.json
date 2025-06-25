@@ -2,24 +2,25 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "format:{reference_part} {part_category}",
- "creation": "2025-06-15 20:54:00.177106",
+ "creation": "2025-06-25 10:15:02.528183",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_1",
   "reference_part",
-  "reference_type",
-  "manufacturer",
   "column_break_gkyz",
   "part_category",
   "column_break_fssw",
-  "reorder_level",
+  "part_type",
   "column_break_ipfg",
-  "is_discontinued",
   "section_break_2",
-  "description",
+  "units",
   "section_break_3",
-  "available_items"
+  "items",
+  "section_break_4",
+  "reorder_level",
+  "column_break_vysp",
+  "is_discontinued"
  ],
  "fields": [
   {
@@ -33,22 +34,8 @@
    "fieldtype": "Column Break"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_1",
-   "fieldtype": "Section Break",
-   "label": "Details Section"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "section_break_2",
-   "fieldtype": "Section Break",
-   "label": "Description Section"
-  },
-  {
-   "fieldname": "available_items",
-   "fieldtype": "HTML",
-   "label": "Available Item(s)",
-   "read_only": 1
+   "fieldtype": "Section Break"
   },
   {
    "default": "0",
@@ -58,12 +45,8 @@
   },
   {
    "fieldname": "section_break_3",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
+   "fieldtype": "Section Break",
+   "label": "Cross Reference"
   },
   {
    "fieldname": "part_category",
@@ -82,21 +65,40 @@
    "unique": 1
   },
   {
-   "fieldname": "reference_type",
-   "fieldtype": "Select",
-   "label": "Reference Type",
-   "options": "\nOE\nGeneric"
-  },
-  {
    "fieldname": "column_break_gkyz",
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.reference_type == 'OE'",
-   "fieldname": "manufacturer",
-   "fieldtype": "Link",
-   "label": "Manufacturer",
-   "options": "Manufacturer"
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Reference Part Item"
+  },
+  {
+   "fieldname": "part_type",
+   "fieldtype": "Select",
+   "label": "Part Type",
+   "options": "\nFactory Fitted\nGeneric"
+  },
+  {
+   "fieldname": "units",
+   "fieldtype": "Table",
+   "label": "Units",
+   "options": "Applicable Units"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Logistics"
+  },
+  {
+   "fieldname": "column_break_vysp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Compatible Units"
   }
  ],
  "grid_page_length": 50,
@@ -107,7 +109,7 @@
    "link_fieldname": "custom_reference_part"
   }
  ],
- "modified": "2025-06-24 21:52:35.530959",
+ "modified": "2025-06-25 11:29:54.134124",
  "modified_by": "Administrator",
  "module": "Rada",
  "name": "Reference Part",
