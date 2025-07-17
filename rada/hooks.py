@@ -264,10 +264,13 @@ fixtures = [
         "filters": [["module", "=", "Rada"]]
     }
 
+
 ]
 
 doctype_js = {
     "Reference Part": "public/js/reference_part.js"
 }
 
-
+override_doctype_class = {
+    "Engine": "rada.engine.engine.Engine"
+}

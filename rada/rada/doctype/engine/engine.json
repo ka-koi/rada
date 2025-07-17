@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "creation": "2025-05-25 23:13:59.779462",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "is_electric",
+  "engine_code",
+  "displacement",
+  "fuel_type",
+  "configuration",
+  "horsepower",
+  "motor_layour"
+ ],
+ "fields": [
+  {
+   "fieldname": "engine_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Engine Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "displacement",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Displacement",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": "Fuel Type",
+   "options": "\nPetrol\nDiesel"
+  },
+  {
+   "fieldname": "configuration",
+   "fieldtype": "Select",
+   "label": "Configuration",
+   "options": "\nI3\nI4\nI5\nI6\nV6\nV8\nV10\nV12\nH4\nH6\nRotary\nW8\nW12\nW16\nElectric Motor\nHybrid"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_electric",
+   "fieldtype": "Check",
+   "label": "Is Electric"
+  },
+  {
+   "fieldname": "horsepower",
+   "fieldtype": "Float",
+   "label": "Horsepower",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "motor_layour",
+   "fieldtype": "Select",
+   "label": "Motor Layour"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-26 08:24:11.389226",
+ "modified_by": "Administrator",
+ "module": "Rada",
+ "name": "Engine",
+ "naming_rule": "By script",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

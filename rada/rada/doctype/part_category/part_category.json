@@ -6,7 +6,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "category_name"
+  "category_name",
+  "description"
  ],
  "fields": [
   {
@@ -14,12 +15,17 @@
    "fieldtype": "Data",
    "label": "Category Name",
    "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-15 21:21:57.298815",
+ "modified": "2025-07-06 21:41:32.124103",
  "modified_by": "Administrator",
  "module": "Rada",
  "name": "Part Category",

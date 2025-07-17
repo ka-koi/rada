@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ApplicableUnits(Document):
+class Engine(Document):
 	pass
