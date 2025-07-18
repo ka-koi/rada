@@ -1,12 +1,16 @@
-// Validation for year range in Applicable Units
-frappe.ui.form.on('Applicable Units', {
-    to_year: function(frm, cdt, cdn) {
-        const row = locals[cdt][cdn];
-        if (row.to_year && row.from_year && row.to_year < row.from_year) {
-            frappe.msgprint(__('To Year cannot be earlier than From Year'));
-            frappe.model.set_value(cdt, cdn, 'to_year', row.from_year);
-        }
+// Define reusable validation function
+function validate_years(frm, cdt, cdn) {
+    const row = locals[cdt][cdn];
+    if (row.to_year && row.from_year && row.to_year < row.from_year) {
+        frappe.msgprint(__('To Year cannot be earlier than From Year'));
+        frappe.model.set_value(cdt, cdn, 'to_year', row.from_year);
     }
+}
+
+// Attach validation to Applicable Units child table
+frappe.ui.form.on('Applicable Units', {
+    to_year: validate_years,
+    from_year: validate_years
 });
 
 // Row-level check to prevent duplicate item_code in Reference Part Item
@@ -20,7 +24,7 @@ frappe.ui.form.on('Reference Part Item', {
         );
 
         if (is_duplicate) {
-            frappe.msgprint(`Same item cannot be entered multiple times; "${current_code}".`);
+            frappe.msgprint(`Same item cannot be entered multiple times: "${current_code}".`);
             frappe.model.set_value(cdt, cdn, 'item_code', null);
         }
     }
