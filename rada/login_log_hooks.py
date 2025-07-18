@@ -5,6 +5,7 @@ from math import atan2, cos, radians, sin, sqrt
 
 import frappe
 import requests
+from requests.exceptions import Timeout
 
 # in apps/rada/rada/login_log_hooks.py
 
@@ -32,7 +33,7 @@ def get_ip():
 
 def get_geolocation(ip):
 	try:
-		res = requests.get(f"https://ipinfo.io/{ip}/json")
+		res = requests.get(f"https://ipinfo.io/{ip}/json", timeout=5)
 		if res.status_code == 200:
 			data = res.json()
 			loc = data.get("loc", "")
@@ -45,6 +46,8 @@ def get_geolocation(ip):
 				"lat": lat,
 				"lon": lon,
 			}
+	except Timeout as e:
+		frappe.log_error(str(e), "Login Log: Geo IP Lookup Timed Out")
 	except Exception as e:
 		frappe.log_error(str(e), "Login Log: Geo IP Lookup Failed")
 	return {}
