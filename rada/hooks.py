@@ -274,3 +274,11 @@ doctype_js = {
 override_doctype_class = {
     "Engine": "rada.engine.engine.Engine"
 }
+
+on_login = "rada.login_log_hooks.record_login"
+
+doc_events = {
+    "Login Log": {
+        "before_insert": "rada.login_log_hooks.autoname"
+    }
+}
