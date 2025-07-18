@@ -5,6 +5,7 @@ from math import atan2, cos, radians, sin, sqrt
 
 import frappe
 import requests
+from frappe.email.smtp import OutgoingEmailError
 
 # in apps/rada/rada/login_log_hooks.py
 
@@ -103,12 +104,15 @@ def record_login(login_manager):
 		doc.insert(ignore_permissions=True)
 
 		if is_unusual:
-			frappe.sendmail(
-				recipients=["admin@example.com"],  # Change this
-				subject=f"🚨 Unusual Login Detected: {user}",
-				message=f"{user} logged in from:\n\n"
-				f"IP: {ip}\n"
-				f"Location: {location}\n"
-				f"Coordinates: {coordinates}\n"
-				f"Time: {doc.login_time} on {today}",
-			)
+			try:
+				frappe.sendmail(
+					recipients=["admin@example.com"],  # Change this
+					subject=f"🚨 Unusual Login Detected: {user}",
+					message=f"{user} logged in from:\n\n"
+					f"IP: {ip}\n"
+					f"Location: {location}\n"
+					f"Coordinates: {coordinates}\n"
+					f"Time: {doc.login_time} on {today}",
+				)
+			except OutgoingEmailError as e:
+				frappe.log_error(str(e), "Unusual Login Alert Email Failed")
