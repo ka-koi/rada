@@ -104,15 +104,18 @@ def record_login(login_manager):
 		doc.insert(ignore_permissions=True)
 
 		if is_unusual:
-			try:
-				frappe.sendmail(
-					recipients=["admin@example.com"],  # Change this
-					subject=f"🚨 Unusual Login Detected: {user}",
-					message=f"{user} logged in from:\n\n"
-					f"IP: {ip}\n"
-					f"Location: {location}\n"
-					f"Coordinates: {coordinates}\n"
-					f"Time: {doc.login_time} on {today}",
-				)
-			except OutgoingEmailError as e:
-				frappe.log_error(str(e), "Unusual Login Alert Email Failed")
+			# Skip notification when outgoing email isn't configured yet.
+			if frappe.db.exists("Email Account", {"default_outgoing": 1, "enable_outgoing": 1}):
+				try:
+					frappe.sendmail(
+						recipients=["admin@example.com"],  # Change this
+						subject=f"🚨 Unusual Login Detected: {user}",
+						message=f"{user} logged in from:\n\n"
+						f"IP: {ip}\n"
+						f"Location: {location}\n"
+						f"Coordinates: {coordinates}\n"
+						f"Time: {doc.login_time} on {today}",
+					)
+				except Exception:
+					# Email should never block login if SMTP/default account is not configured yet.
+					frappe.log_error(frappe.get_traceback(), "Login Log Email Notify Failed")
