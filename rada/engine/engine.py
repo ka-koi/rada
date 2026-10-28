@@ -1,8 +1,10 @@
 import frappe
-from frappe.model.document import Document
 from frappe import _
 
-class Engine(Document):
+from rada.rada.doctype.engine.engine import Engine as OriginalEngine
+
+
+class Engine(OriginalEngine):
     def autoname(self):
         missing_fields = []
 

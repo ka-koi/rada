@@ -5,7 +5,7 @@ from math import atan2, cos, radians, sin, sqrt
 
 import frappe
 import requests
-from frappe.email.smtp import OutgoingEmailError
+from frappe import OutgoingEmailError
 
 # in apps/rada/rada/login_log_hooks.py
 
